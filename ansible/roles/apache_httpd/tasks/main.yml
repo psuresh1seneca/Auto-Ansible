@@ -1,0 +1,8 @@
+---
+- name: For Amazon
+  import_tasks: amazon-apache.yaml
+  when: ansible_facts['os_family']|lower == 'redhat'
+        
+- name: For Ubuntu
+  import_tasks: ubuntu-httpd.yaml
+  when: ansible_facts['os_family']|lower == 'debian'

@@ -1,0 +1,21 @@
+[linux]
+ubuntu1 ansible_host=44.201.226.245
+ubuntu2 ansible_host=184.72.78.50
+amazon1 ansible_host=3.88.165.209
+amazon2 ansible_host=54.205.15.243
+
+[ubuntu]
+ubuntu1 ansible_host=44.201.226.245
+ubuntu2 ansible_host=184.72.78.50
+
+[amazon]
+amazon1 ansible_host=3.88.165.209
+amazon2 ansible_host=54.205.15.243
+
+[ubuntu:vars]
+ansible_user = ubuntu
+ansible_ssh_private_key_file = /home/ec2-user/.ssh/linux
+
+[amazon:vars]
+ansible_user = ec2-user 
+ansible_ssh_private_key_file = /home/ec2-user/.ssh/linux

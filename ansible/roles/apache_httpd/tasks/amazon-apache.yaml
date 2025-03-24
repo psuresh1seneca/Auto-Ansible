@@ -1,0 +1,21 @@
+---
+- name: Install Apache Web Server for RPM
+  yum: name=httpd state=latest
+    
+- name: Print Linux Family
+  debug: var=ansible_os_family
+      
+- name:     Generate index.html from jinja2 template and copy to Amazon Host
+  template: src=index.j2 dest={{ dest_folder }}/index.html mode=0555
+  notify:   Restart Httpd
+
+- name:     Copy Images
+  copy:     src={{ item }} dest={{ dest_folder }}/ mode=0555
+  notify:   Restart Httpd
+
+  loop:
+    - "image01.jpg"
+
+      
+- name: Start Apache Web Server
+  service: name=httpd state=started enabled=yes

@@ -1,0 +1,9 @@
+---
+- hosts: tag_Amazon tag_Ubuntu
+  gather_facts: true
+  become: yes
+  
+  roles:
+     - apache_httpd
+
+     

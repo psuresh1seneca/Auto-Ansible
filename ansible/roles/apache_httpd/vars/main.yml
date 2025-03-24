@@ -1,0 +1,4 @@
+---
+dest_folder : /var/www/html
+owner       : Praveen
+Distro      : "{{ 'Amazon' if ansible_os_family == 'RedHat' else 'Ubuntu' }}"

@@ -1,0 +1,21 @@
+---
+- name: Install Apache Web Server for Debian
+  apt: name=apache2 state=latest
+    
+- name: Print Linux Family
+  debug: var=ansible_os_family
+      
+- name:     Generate index.html from jinja2 template and copy to Ubuntu Linux
+  template: src=index.j2 dest={{ dest_folder }}/index.html mode=0555
+  notify:   Restart Apache2
+
+- name:     Copy Images
+  copy:     src={{ item }} dest={{ dest_folder }}/ mode=0555
+  notify:   Restart Apache2
+
+  loop:
+    - "image01.jpg"
+
+      
+- name: Start Apache Web Server
+  service: name=apache2 state=started enabled=yes   
